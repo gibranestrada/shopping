@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+}
+.container {
+    display: grid;    
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 80px 350px 400px 80px;
+}
+
+header {
+    grid-column: span 12;
+}
+aside {
+    grid-column: span 12;
+}
+main {
+    grid-column: span 12;
+    background-color: lightblue;
+}
+footer {
+    grid-column: span 12;
+    background-color: lightcoral;
+}
+
+header {
+    display: flex;
+}
+
+header > div:nth-child(2) {
+    margin-left: auto;
+}
+
+.main-logo{
+    margin-left: 15%;
+    margin-top: 20px;
+}
+.visible-shopping{
+    margin-right: 15%;
+    margin-top: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+.submenu {
+    position: relative;
+}
+
+.submenu #shopping-cart {
+    display: none;
+}
+
+.submenu:hover #shopping-cart{
+    display: block;
+    position: absolute;
+    right:0;
+    top:100%;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    min-height: 400px;
+    min-width: 300px;
+}
+
+aside{
+    background-image:url(../img/hero.jpg);
+    background-size: cover;
+}
+
+.image-content{
+    margin-top: 80px;
+    color: white;
+    margin-left: 8%;
+}
+.image-content form {
+    position: relative;
+    margin-bottom: 0;
+}
+
+.image-content form #search-phone{
+    height: 51px;
+    margin-bottom: 0;
+    width:250px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: none;
+    border: none;
+    padding-left: 6px;
+}
+.image-content form .submit-search-phone{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    padding: 0;
+    display: block;
+    text-indent: -9999px;
+    width: 50px;
+    margin-left: 245px;
+    background-image: url(../img/mglass.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
