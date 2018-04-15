@@ -22,24 +22,62 @@ let phones;
     let phoneArray;
 
     //load function
-setTimeout(loadFunction, 700);
+setTimeout(loadFunction, 500);
 
 //functions
 function loadFunction(){
-    phoneArray = phones.map((listing, index) => {
+    phoneArray = phones.map((listing, id) => {
         return listing =
 
-     `<div class='card' key = ${index}>
+     `<div class='card' key = ${id}>
         <img src="${listing.image}" class='phone-image' style="width: 100%"><hr>
         <div class='info-card'>
-            <h4>${listing.name}</h4>
+            <h4>${listing.name} <span class='price'> $${listing.price}</span></h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nul..</p>
-            <p class='price'>$400 <span>$300</span></p>
-            <a href='#' class='button primary button input add-to-cart' data-id='1'>Add to Cart</a>
-            <a href='#' class='button primary button input add-to-cart' data-id='1'>More info</a>
+            <a href='#' class='add-to-cart' data-id='1'>Add to Cart</a>
+            <div class= 'visible-card'>
+            <ul>
+                <li class = 'submenu-card'>
+                    <a class='more-info' id='more-info' data-id='1'>More info</a>
+                    <div id='shopping-card'>
+                    <img src='${listing.image}' id='card-image' style='width:200px; height:200px'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CPU: ${listing.cpu}</th>
+                                    <th>CAMERA: ${listing.camera}</th>
+                                    <th>SIZE: ${listing.size}</th>
+                                    <th>WEIGHT: ${listing.weight}</th>
+                                    <th>DISPLAY: ${listing.display}</th>
+                                    <th>BATTERY: ${listing.battery}</th>
+                                    <th>MEMORY: ${listing.memory}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <span style='color: royalblue'>${listing.name} <span><b>$${listing.price}</b></span><br />
+                        <span>${listing.description}</span>
+                    </div>
+                </li>
+            </ul>
+            </div>
         </div>
-        </div><br/>
+    </div><br/>
     ` 
     }).join("")
     phoneCard.innerHTML = phoneArray;
+    console.log(phoneCard.innerHTML)
 } 
+
+
+
+
+      /* <a class='more-info' id='more-info' data-id='1'>More info</a>
+            <div class ='container-card'>
+            <div class ='submenu-card' id='submenu-card'>
+                <img src="${listing.image}" id='img-card' style='width:100px; height:100px'>
+                <div id='shopping-card'>
+                    <p> hello</p>
+                </div>
+             </div>
+             </div>  */
