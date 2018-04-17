@@ -4,7 +4,7 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 80px 350px auto 80px;
+    grid-template-rows: 80px 350px auto auto;
 }
 
 header {
@@ -175,8 +175,8 @@ main {
     display: block;
     position: absolute;
     right:0;
-    bottom: -43px;
-    right: -20px;
+    bottom: -10px;
+    right: 0px;
     z-index: 1;
     background-color: white;
     padding: 20px;
@@ -198,10 +198,29 @@ main {
     float:right;
 }
 
-
-
-
 footer{
-    text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.footer-primary a {
     padding-top: 20px;
+    text-decoration: none;
+    cursor: not-allowed;
+    text-align: center;
+    display: block;
+}
+.footer-primary{
+  margin-right: 30px;
+}
+.footer-secondary{
+  margin-left: 30px;
+}
+.footer-secondary a {
+  padding-top: 20px;
+  text-decoration: none;
+  cursor: not-allowed;
+  text-align: center;
+  display: block;
 }
