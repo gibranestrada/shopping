@@ -167,7 +167,7 @@ main {
     font-size: 12px;
 }
 .price{
-  font-size: 11px;
+  font-size: 12px;
 }
 @media screen and (min-width: 600px){
    .info-card h4 {
@@ -177,11 +177,11 @@ main {
     font-size: 22px;
   }
   .info-card p {
-    font-size: 20px;
+    font-size: 25px;
   }
 }
 .info-card p {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .info-card span{

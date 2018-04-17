@@ -42,7 +42,7 @@ function loadFunction(){
         `<div class='card' key="${index}">
             <img src="${listing.image}" class='phone-image' style="width: 100%"><hr>
             <div class='info-card'>
-                <h4>${listing.name} <span class='price'> $${listing.price}</span></h4>
+                <h4>${listing.name} <span class='price'>$${listing.price}</span></h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nul..</p>
                 <a href='#' class='add-to-cart' data-id='${listing.id}'>Add to Cart</a>
                 <div class= 'visible-card'>
