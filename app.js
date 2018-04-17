@@ -9,7 +9,7 @@ let phones;
     })
     .then(phoneData => {
         phones = phoneData.phones;
-        
+
         //load functions
         loadFunction();
         loadEventListeners();
@@ -19,7 +19,6 @@ let phones;
         console.log(error);
         alert("Refresh the page");
     });
-
 
 //variables
     const phoneCard = document.querySelector('#card');
@@ -49,19 +48,19 @@ function loadFunction(){
                 <div class= 'visible-card'>
                 <ul>
                     <li class = 'submenu-card'>
-                        <a class='more-info' id='data-${listing.id}' data-id='${listing.id}' 
+                        <a class='more-info' id='data-${listing.id}' data-id='${listing.id}'
                         >More info</a>
-                    
+
                     </li>
                 </ul>
                 </div>
             </div>
         </div><br/>
-    ` 
+    `
     }).join("")
     //add phoneArray(mapped api data) to phoneCard
     phoneCard.innerHTML = phoneArray;
-} 
+}
 
 //run through the api data again for the hidden card
 function showInfoButton(e){
@@ -94,8 +93,8 @@ function showInfoButton(e){
         </div>
         `
     });
-    
-    //Match event id with phoneArray id 
+
+    //Match event id with phoneArray id
     if(event.target.id == 'data-1' &&  phoneArray[0].includes('data-1') == true){
         phoneArray = phoneArray[0];
     }else if (event.target.id == 'data-2' &&  phoneArray[1].includes('data-2') == true){
@@ -109,7 +108,7 @@ function showInfoButton(e){
     }else  if(event.target.id == 'data-6' &&  phoneArray[5].includes('data-6') == true){
         phoneArray = phoneArray[5]
     }
-    
+
     //add phoneArray to cardDesc
     cardDesc.insertAdjacentHTML('beforeend', phoneArray);
     //if cardsButton is true appendChild if false don't show anything
@@ -132,8 +131,3 @@ function deleteCard(e){
         list[i].remove();
         }
     }
-
-
-
-
-
