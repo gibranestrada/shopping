@@ -1,7 +1,5 @@
 
-
-
-//fetch api data
+//fetch api data from mocky
 let phones;
     fetch('http://www.mocky.io/v2/5acfc4df3100006a004eaab4')
     .then(response => {
@@ -9,7 +7,11 @@ let phones;
     })
     .then(phoneData => {
         phones = phoneData.phones;
-        console.log(phones)
+        
+        //load functions
+        loadFunction();
+        loadEventListeners();
+        infoCard();
     })
     .catch(function(error){
         console.log(error);
@@ -20,79 +22,50 @@ let phones;
 //variables
     const phoneCard = document.querySelector('#card');
     let phoneArray,
-        phoneArray2,
         infoButton,
         cardsButton,
         deleteButton;
 
-    //load listeners
-setTimeout(loadFunction, 400);
-setTimeout(loadFunction, 500);
-
-setTimeout(loadEventListeners, 700);
-
-
-
+//load listeners
 function loadEventListeners(){
     infoButton = document.querySelectorAll(`.more-info`);
-    cardsButton = document.querySelector('#shopping-car2');
-   
-
-}
-
-setTimeout(info, 900);
-function info(){
+   }
+//event listener
+function infoCard(){
     infoButton.forEach(aClass => aClass.addEventListener('click', showInfoButton));
-    
-}
-//functions
+    }
+//Map through phones(api data) save it to phoneArray
 function loadFunction(){
     phoneArray = phones.map((listing, index) => {
         return listing =
-
-     `<div class='card' key="${index}">
-        <img src="${listing.image}" class='phone-image' style="width: 100%"><hr>
-        <div class='info-card'>
-            <h4>${listing.name} <span class='price'> $${listing.price}</span></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nul..</p>
-            <a href='#' class='add-to-cart' data-id='${listing.id}'>Add to Cart</a>
-            <div class= 'visible-card'>
-            <ul>
-                <li class = 'submenu-card'>
-                    <a class='more-info' id='data-${listing.id}' data-id='${listing.id}' 
-                    >More info</a>
+        `<div class='card' key="${index}">
+            <img src="${listing.image}" class='phone-image' style="width: 100%"><hr>
+            <div class='info-card'>
+                <h4>${listing.name} <span class='price'> $${listing.price}</span></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nul..</p>
+                <a href='#' class='add-to-cart' data-id='${listing.id}'>Add to Cart</a>
+                <div class= 'visible-card'>
+                <ul>
+                    <li class = 'submenu-card'>
+                        <a class='more-info' id='data-${listing.id}' data-id='${listing.id}' 
+                        >More info</a>
                     
-                </li>
-            </ul>
+                    </li>
+                </ul>
+                </div>
             </div>
-        </div>
-    </div><br/>
+        </div><br/>
     ` 
     }).join("")
-  
+    //add phoneArray(mapped api data) to phoneCard
     phoneCard.innerHTML = phoneArray;
-   // openCards();
 } 
-/*
-let openButton;
-function openCards(){
-    openButton = document.querySelectorAll(".more-info");
-    openButton.forEach(aClass => aClass.addEventListener('click', openCard));
-}
-function openCard(e){
-    openButton = document.getElementById(e.target.id)
-    openButton.style.display = "block";
-}
 
-function closeCard(e){
-    let closeButton = document.querySelector(".extra-info");
-    closeButton.style.display = "none";
-} */
-
-
+//run through the api data again for the hidden card
 function showInfoButton(e){
     cardsButton = document.getElementById(e.target.id);
     e.preventDefault();
+    //create cardDesc(div) and add a class
     let cardDesc = document.createElement('div');
     cardDesc.classList.add('hello');
     phoneArray = phones.map((listing,id)=> {
@@ -120,6 +93,7 @@ function showInfoButton(e){
         `
     });
     
+    //Match event id with phoneArray id 
     if(event.target.id == 'data-1' &&  phoneArray[0].includes('data-1') == true){
         phoneArray = phoneArray[0];
     }else if (event.target.id == 'data-2' &&  phoneArray[1].includes('data-2') == true){
@@ -133,19 +107,30 @@ function showInfoButton(e){
     }else  if(event.target.id == 'data-6' &&  phoneArray[5].includes('data-6') == true){
         phoneArray = phoneArray[5]
     }
-    cardDesc.innerHTML = phoneArray;
-    cardsButton.appendChild(cardDesc);
+    
+    //add phoneArray to cardDesc
+    cardDesc.insertAdjacentHTML('beforeend', phoneArray);
+    //if cardsButton is true appendChild if false don't show anything
+    if(cardsButton) {
+        cardsButton.appendChild(cardDesc);
+    }
     buttonDeleter();
 }
+//adds click event listener to all .close-button
 function buttonDeleter(){
     deleteButton = document.querySelectorAll('.close-button');
     deleteButton.forEach(deleteBtn => deleteBtn.addEventListener('click', deleteCard));
 }
+//deletes all classes named .hello
 function deleteCard(e){
     e.preventDefault;
-    list = document.querySelector('.hello');
-    cardsButton.removeChild(list);
-} 
+    list = document.querySelectorAll('.hello');
+    //loop through list and remove all divs
+    for(let i = 0, len = list.length; i<len; i++) {
+        list[i].remove();
+        }
+    }
+
 
 
 
