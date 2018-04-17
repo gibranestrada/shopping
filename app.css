@@ -126,7 +126,7 @@ main {
     background-color: white;
     text-align: center;
     overflow: visible;
-    width: 250px;
+    width: 300px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px;
@@ -134,7 +134,7 @@ main {
     margin-right: 30px;
     margin-bottom: 80px;
     border-radius: 10px;
-    height: 400px;
+    height: 420px;
     position: relative;
 }
 @media screen and (min-width: 600px){
