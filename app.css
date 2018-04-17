@@ -158,12 +158,25 @@ main {
     padding-left: 8px;
     padding-right: 8px;
     float: left;
-    margin-left: 40px;
+    margin-left: 38px;
 }
 
 .info-card h4 {
     color: cornflowerblue;
+    font-size: 15px;
 }
+.price{
+  font-size: 15px;
+}
+@media screen and (min-width: 800px){
+   .info-card h4 {
+    font-size: 22px;
+  }
+  .price{
+    font-size: 22px;
+  }
+}
+
 .info-card span{
     margin-left: 25px;
     color: black;
