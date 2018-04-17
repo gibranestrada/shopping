@@ -164,10 +164,10 @@ main {
 
 .info-card h4 {
     color: cornflowerblue;
-    font-size: 13px;
+    font-size: 12px;
 }
 .price{
-  font-size: 13px;
+  font-size: 11px;
 }
 @media screen and (min-width: 600px){
    .info-card h4 {
@@ -176,9 +176,12 @@ main {
   .price{
     font-size: 22px;
   }
+  .info-card p {
+    font-size: 20px;
+  }
 }
 .info-card p {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .info-card span{
