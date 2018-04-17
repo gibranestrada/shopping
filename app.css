@@ -64,7 +64,7 @@ ul {
 }
 
 aside{
-    background-image:url(../uploads/hero.jpg);
+    background-image:url(./uploads/hero.jpg);
     background-size: cover;
 }
 
@@ -97,7 +97,7 @@ aside{
     text-indent: -9999px;
     width: 50px;
     margin-left: 245px;
-    background-image: url(../uploads/mglass.png);
+    background-image: url(./uploads/mglass.png);
     background-position: right center;
     background-repeat: no-repeat;
     border: none;
@@ -175,7 +175,7 @@ footer{
     color: black;
 }
 
-
+/*hidden card*/
 
 .extra-info {
     display: block;
