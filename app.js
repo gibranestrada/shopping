@@ -1,7 +1,7 @@
 
 //fetch api data from mocky
 let phones;
-    fetch('https://www.mocky.io/v2/5acfc4df3100006a004eaab4')
+    fetch('http://www.mocky.io/v2/5ad5471a3200006600202a94')
     .then(response => {
         return response.json();
     })
