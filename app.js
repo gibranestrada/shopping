@@ -132,22 +132,26 @@ function deleteCard(e){
         }
     }
 
-//add to shopping cart menu and localStorage
-//variables
-const phones = document.querySelector('.add-to-cart'),
-  shoppingCartContent = document.querySelector('#cart-content tbody'),
-  clearCartBtn = document.querySelector('#clear-cart');
+
 
 //listeners
 setTimeout(loadEventListeners2, 2000);
-
+let shoppingCartContent;
 function loadEventListeners2(){
+
+
+  //add to shopping cart menu and localStorage
+  //variables
+  let phoneBtn = document.querySelector('.add-to-cart'),
+    clearCartBtn = document.querySelector('#clear-cart');
+    shoppingCartContent = document.querySelector('#cart-content tbody'),
+
+
   //the the add to cart button is clicked
-  phones.addEventListener('click', buyPhone);
-}
+  phoneBtn.addEventListener('click', buyPhone);
 
 //when the remove button is clicked
-  shoppingCartContent.addEventListener('click', removeCourse);
+  shoppingCartContent.addEventListener('click', removePhone);
 
   //when the clearcart button is clicked
   clearCartBtn.addEventListener('click', clearCart);
@@ -158,7 +162,7 @@ function loadEventListeners2(){
 //functions
 
 function buyPhone(e){
-  e.preventDefafult();
+  e.preventDefault();
   //find phone that was added by using delegation
   if(e.target.classList.contains('add-to-cart')){
     const cellPhone = e.target.parentElement.parentElement;
@@ -174,7 +178,51 @@ function getPhoneInfo(cellPhone){
   const phoneInfo = {
     image: cellPhone.querySelector('img').src,
     title: cellPhone.querySelector('h4').textContent,
-    price: cellPhone.querySelector('.price span').textContent,
+    price: cellPhone.querySelector('h4 span').textContent,
     id: cellPhone.querySelector('a').getAttribute('data-id')
   }
+
+  //insert into the shopping Cart
+  addIntoCart(phoneInfo);
+}
+
+function addIntoCart(cellPhone) {
+  const row = document.createElement('tr');
+
+  //build the template
+  row.innerHTML = `
+        <tr>
+            <td>
+                <img src="${cellPhone.image}" width=100>
+            </td>
+            <td>${cellPhone.title}</td>
+            <td>${cellPhone.price}</td>
+            <td>
+                <a href="#" class='remove' data-id="${cellPhone.id}">X</a>
+            </td>
+        </tr>
+  `;
+  //add into the shopping Cart
+  shoppingCartContent.appendChild(row);
+
+}
+
+//remove phone from the DOM
+function removePhone(e) {
+  let phone, phoneId;
+
+  //remove from the DOM
+  if (e.target.classList.contains('remove')){
+    e.target.parentElement.parentElement.remove();
+    phone = e.target.parentElement.parentElement;
+    phoneId = phone.querySelector('a').getAttribute('data-id');
+  }
+}
+//clears the shopping cart
+function clearCart(){
+
+  while(shoppingCartContent.firstChild) {
+    shoppingCartContent.removeChild(shoppingCartContent.firstChild);
+  }
+
 }
