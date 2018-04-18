@@ -14,6 +14,7 @@ let phones;
         loadFunction();
         loadEventListeners();
         infoCard();
+        loadEventListeners2();
     })
     .catch(function(error){
         console.log(error);
@@ -135,20 +136,21 @@ function deleteCard(e){
 
 
 //listeners
-setTimeout(loadEventListeners2, 2000);
-let shoppingCartContent;
 function loadEventListeners2(){
 
 
   //add to shopping cart menu and localStorage
   //variables
-  let phoneBtn = document.querySelector('.add-to-cart'),
+  let phoneBtn = document.querySelectorAll('.add-to-cart'),
     clearCartBtn = document.querySelector('#clear-cart');
     shoppingCartContent = document.querySelector('#cart-content tbody'),
 
-
+    shoppingCard();
   //the the add to cart button is clicked
-  phoneBtn.addEventListener('click', buyPhone);
+  function shoppingCard(){
+      phoneBtn.forEach(aClass => aClass.addEventListener('click', buyPhone));
+      }
+  //phoneBtn.addEventListener('click', buyPhone);
 
 //when the remove button is clicked
   shoppingCartContent.addEventListener('click', removePhone);
