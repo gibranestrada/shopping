@@ -131,3 +131,50 @@ function deleteCard(e){
         list[i].remove();
         }
     }
+
+//add to shopping cart menu and localStorage
+//variables
+const phones = document.querySelector('.add-to-cart'),
+  shoppingCartContent = document.querySelector('#cart-content tbody'),
+  clearCartBtn = document.querySelector('#clear-cart');
+
+//listeners
+setTimeout(loadEventListeners2, 2000);
+
+function loadEventListeners2(){
+  //the the add to cart button is clicked
+  phones.addEventListener('click', buyPhone);
+}
+
+//when the remove button is clicked
+  shoppingCartContent.addEventListener('click', removeCourse);
+
+  //when the clearcart button is clicked
+  clearCartBtn.addEventListener('click', clearCart);
+
+  //
+}
+
+//functions
+
+function buyPhone(e){
+  e.preventDefafult();
+  //find phone that was added by using delegation
+  if(e.target.classList.contains('add-to-cart')){
+    const cellPhone = e.target.parentElement.parentElement;
+
+    //read the values
+    getPhoneInfo(cellPhone);
+  }
+}
+
+//reads html information of the selected phones
+function getPhoneInfo(cellPhone){
+  //create object with phone data
+  const phoneInfo = {
+    image: cellPhone.querySelector('img').src,
+    title: cellPhone.querySelector('h4').textContent,
+    price: cellPhone.querySelector('.price span').textContent,
+    id: cellPhone.querySelector('a').getAttribute('data-id')
+  }
+}
