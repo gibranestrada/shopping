@@ -14,7 +14,7 @@ let phones;
         loadFunction();
         loadEventListeners();
         infoCard();
-        loadEventListeners2();
+        loadEventListenersCart();
     })
     .catch(function(error){
         console.log(error);
@@ -126,17 +126,38 @@ function buttonDeleter(){
 //deletes all classes named .hello
 function deleteCard(e){
     e.preventDefault;
-    list = document.querySelectorAll('.hello');
-    //loop through list and remove all divs
-    for(let i = 0, len = list.length; i<len; i++) {
-        list[i].remove();
-        }
+    e.target.parentElement.parentElement.remove();
+    //list = document.querySelectorAll('.hello');
+    let phone, phoneId;
+    //remove from the DOM
+    //console.log(e.target.parentElement.parentElement.parentElement)
+    //if (e.target.classList.contains('close-button')){
+
+      //phone = e.target.parentElement.parentElement;
+      //phoneId = phone.querySelector('a').getAttribute('data-id');
+    //}
+  //}
+
+
+    //for(let i = 0, len = list.length; i<len; i++) {
+      //  list[i].remove();
+        //}
     }
 
+/*
+let phonesLS = getPhonesFromStorage();
+
+//loop through the array and find the index to remove
+phonesLS.forEach(function(phoneLS, index){
+  if(phoneLS.id === id){
+    phonesLS.splice(index, 1);
+  }
+});
+*/
 
 
 //listeners
-function loadEventListeners2(){
+function loadEventListenersCart(){
 
 
   //add to shopping cart menu and localStorage
@@ -158,7 +179,9 @@ function loadEventListeners2(){
   //when the clearcart button is clicked
   clearCartBtn.addEventListener('click', clearCart);
 
-  //
+  //Document ready
+  //document.addEventListener('DOMContentLoaded', getFromLocalStorage);
+  getFromLocalStorage();
 }
 
 //functions
@@ -207,6 +230,33 @@ function addIntoCart(cellPhone) {
   //add into the shopping Cart
   shoppingCartContent.appendChild(row);
 
+  //add phone into storage
+  saveIntoStorage(cellPhone);
+}
+
+//add the phone into local storage
+
+function saveIntoStorage(cellPhone) {
+  let phonesStorage = getPhonesFromStorage();
+
+  //add the phone into the array
+  phonesStorage.push(cellPhone);
+
+  //convert JSON into String
+  localStorage.setItem('phones', JSON.stringify(phonesStorage));
+}
+
+
+//get the contents from the saved storage
+function getPhonesFromStorage() {
+let phonesStorage;
+  //if something exist on storage then we get the value, otherwise create an empty array
+  if(localStorage.getItem('phones') === null) {
+    phonesStorage = [];
+  }else {
+    phonesStorage = JSON.parse(localStorage.getItem('phones'));
+  }
+  return phonesStorage;
 }
 
 //remove phone from the DOM
@@ -219,7 +269,26 @@ function removePhone(e) {
     phone = e.target.parentElement.parentElement;
     phoneId = phone.querySelector('a').getAttribute('data-id');
   }
+  //remove from local storage
+  removePhoneLocalStorage(phoneId)
 }
+
+//remove from local storage
+function removePhoneLocalStorage(id){
+  //get the local storage data
+  let phonesLS = getPhonesFromStorage();
+
+  //loop through the array and find the index to remove
+  phonesLS.forEach(function(phoneLS, index){
+    if(phoneLS.id === id){
+      phonesLS.splice(index, 1);
+    }
+  });
+  //add the rest of the array
+  localStorage.setItem('phones', JSON.stringify(phonesLS));
+}
+
+
 //clears the shopping cart
 function clearCart(){
 
@@ -227,4 +296,35 @@ function clearCart(){
     shoppingCartContent.removeChild(shoppingCartContent.firstChild);
   }
 
+  //clear from local storage
+  clearLocalStorage();
+}
+
+//clears the whole local storage
+function clearLocalStorage(){
+  localStorage.clear();
+}
+
+//loads when document is ready and print phones into shopping cart
+function getFromLocalStorage(){
+  let phonesLS = getPhonesFromStorage();
+  //loop through phones and print into the cart
+  phonesLS.forEach(function(phone){
+    //create the <tr>
+    const row = document.createElement('tr');
+    //print the content
+    row.innerHTML = `
+        <tr>
+            <td>
+                <img src="${phone.image}" width=100>
+            </td>
+            <td>${phone.title}</td>
+            <td>${phone.price}</td>
+            <td>
+                <a href="#" class='remove' data-id="${phone.id}">X</a>
+            </td>
+        </tr>
+      `;
+      shoppingCartContent.appendChild(row);
+  });
 }
