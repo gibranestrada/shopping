@@ -54,8 +54,8 @@ ul {
 .submenu:hover #shopping-cart{
     display: block;
     position: absolute;
-    right:0;
-    top:100%;
+    right: -23px;
+    top: 25px;
     z-index: 1;
     background-color: white;
     padding: 20px;
@@ -146,7 +146,14 @@ main {
     box-shadow: 10px 10px 40px 10px rgba(0,0,0,0.2);
 }
 .card img{
-    width: 100%;
+    width: 230px;
+    height: 230px;
+}
+@media screen and (min-width: 800px){
+  .card img{
+    width: 300px;
+    height: 300px;
+  }
 }
 
 .info-card a {

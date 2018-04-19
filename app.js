@@ -294,7 +294,7 @@ function getFromLocalStorage(){
     row.innerHTML = `
         <tr>
             <td>
-                <img src="${phone.image}" width=100>
+                <img src="${phone.image}" >
             </td>
             <td>${phone.title}</td>
             <td>${phone.price}</td>
