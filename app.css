@@ -59,7 +59,7 @@ ul {
     z-index: 1;
     background-color: white;
     padding: 20px;
-    min-height: 400px;
+    min-height: 100px;
     min-width: 300px;
 }
 #cart-content th{

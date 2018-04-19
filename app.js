@@ -40,7 +40,7 @@ function infoCard(){
 function loadFunction(){
     phoneArray = phones.map((listing, index) => {
         return listing =
-        `<div class='card' key="${index}">
+        `<div class='card' id='p${listing.id}' key="${index}">
             <img src="${listing.image}" class='phone-image' style="width: 100%"><hr>
             <div class='info-card'>
                 <h4>${listing.name}</h4> <span class='price'>$${listing.price}</span>
@@ -306,4 +306,25 @@ function getFromLocalStorage(){
       `;
       shoppingCartContent.appendChild(row);
   });
+}
+//Search for phones
+function searchPhones(){
+  let input, filterPhones, cellData, phoneNames, i, a;
+  input = document.getElementById('search-phone');
+  filterPhones = input.value.toUpperCase();
+  console.log('upper Case', filterPhones)
+  cellData = document.getElementById('card');
+  console.log('id:card', cellData);
+  phoneNames = cellData.querySelectorAll(".card");
+  console.log('grab all card class:', phoneNames)
+  for(i=0; i<phoneNames.length; i++){
+    a = phoneNames[i].getElementsByTagName("h4")[0];
+    console.log('h4 names:', a)
+    if(a.innerHTML.toUpperCase().indexOf(filterPhones) > -1) {
+      phoneNames[i].style.display = "";
+    }else{
+      phoneNames[i].style.display = "none";
+    }
+
+  }
 }
