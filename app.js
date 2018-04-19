@@ -45,7 +45,7 @@ function loadFunction(){
             <div class='info-card'>
                 <h4>${listing.name}</h4> <span class='price'>$${listing.price}</span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nul..</p>
-                
+
                 <a href='#' class='add-to-cart' data-id='${listing.id}'>Add to Cart</a>
                 <div class= 'visible-card'>
                 <ul>
@@ -57,7 +57,7 @@ function loadFunction(){
                 </ul>
                 </div>
             </div>
-        </div><br/>
+        </div>
     `
     }).join("")
     //add phoneArray(mapped api data) to phoneCard
@@ -81,8 +81,8 @@ function showInfoButton(event){
         `<div class='extra-info' id='data-${listing.id}'>
         <img src='${listing.image}' id='card-image' style='width:150px; height:150px'>
         <a href='javascript:;' class='close-button' id='close-button'>X</a>
-            <table>
-                <thead>
+            <table id='table'>
+                <thead id='thead'>
                     <tr>
                         <th>CPU: ${listing.cpu}</th>
                         <th>CAMERA: ${listing.camera}</th>
@@ -94,7 +94,7 @@ function showInfoButton(event){
                     </tr>
                 </thead>
                 <tbody></tbody>
-            </table><br/>
+            </table>
             <span style='color: royalblue'>${listing.name} <span><b>$${listing.price}</b></span><br />
             <span>${listing.description}</span>
         </div>
