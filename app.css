@@ -62,6 +62,41 @@ ul {
     min-height: 400px;
     min-width: 300px;
 }
+#cart-content th{
+  display: table-cell;
+vertical-align: inherit;
+}
+table{
+  margin-bottom: 2.5rem;
+}
+
+#clear-cart{
+  width: 100%;
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  text-align: center;
+  font-weight: 600;
+  line-height: 38px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #333;
+  border: 1px solid #bbb;
+  border-color: #888;
+  box-sizing: border-box;
+  font-size: 11px;
+}
+.remove{
+  background-color: lightcoral;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+}
+/* main display picture */
 
 aside{
     background-image:url(./uploads/hero.jpg);
@@ -106,6 +141,8 @@ aside{
     box-sizing: border-box;
     cursor: pointer;
 }
+
+/*main section / cards */
 main {
     text-align: center;
     padding-bottom: 25px;
@@ -171,9 +208,11 @@ main {
 .info-card h4 {
     color: cornflowerblue;
     font-size: 12px;
+    display: inline-block;
 }
 .price{
   font-size: 12px;
+  display: inline-block;
 }
 @media screen and (min-width: 600px){
    .info-card h4 {
@@ -193,6 +232,17 @@ main {
 .info-card span{
     margin-left: 24px;
     color: black;
+}
+.add-to-cart{
+  display: inline-block;
+  margin-top: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.visible-card a{
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /*hidden card*/
@@ -217,12 +267,12 @@ main {
 .extra-info tr{
     text-align: left;
 }
-.more-info{
-    text-align: left;
-}
+
 #close-button{
     float:right;
-    padding: 12px;
+    padding: 8px 13px 8px 13px;
+    font-size: 20px;
+
 }
 
 footer{

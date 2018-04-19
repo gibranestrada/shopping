@@ -43,8 +43,9 @@ function loadFunction(){
         `<div class='card' key="${index}">
             <img src="${listing.image}" class='phone-image' style="width: 100%"><hr>
             <div class='info-card'>
-                <h4>${listing.name} <span class='price'>$${listing.price}</span></h4>
+                <h4>${listing.name}</h4> <span class='price'>$${listing.price}</span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nul..</p>
+                
                 <a href='#' class='add-to-cart' data-id='${listing.id}'>Add to Cart</a>
                 <div class= 'visible-card'>
                 <ul>
@@ -173,7 +174,7 @@ function buyPhone(e){
     //read the values
     getPhoneInfo(cellPhone);
     }
-  }
+}
 
 //reads html information of the selected phones
 function getPhoneInfo(cellPhone){
@@ -181,7 +182,7 @@ function getPhoneInfo(cellPhone){
   const phoneInfo = {
     image: cellPhone.querySelector('img').src,
     title: cellPhone.querySelector('h4').textContent,
-    price: cellPhone.querySelector('h4 span').textContent,
+    price: cellPhone.querySelector('span').textContent,
     id: cellPhone.querySelector('a').getAttribute('data-id')
   }
 
@@ -294,7 +295,7 @@ function getFromLocalStorage(){
     row.innerHTML = `
         <tr>
             <td>
-                <img src="${phone.image}" >
+                <img src="${phone.image}" width=100>
             </td>
             <td>${phone.title}</td>
             <td>${phone.price}</td>
