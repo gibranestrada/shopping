@@ -215,6 +215,7 @@ main {
 }
 #close-button{
     float:right;
+    padding: 12px;
 }
 
 footer{

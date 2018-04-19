@@ -50,7 +50,7 @@ function loadFunction(){
                 <ul>
                     <li class = 'submenu-card'>
                         <a class='more-info' id='data-${listing.id}' data-id='${listing.id}'
-                        >More info</a>
+                        >More info<div class='test' id='test${listing.id}'></div></a>
 
                     </li>
                 </ul>
@@ -64,9 +64,14 @@ function loadFunction(){
 }
 
 //run through the api data again for the hidden card
-function showInfoButton(e){
-    cardsButton = document.getElementById(e.target.id);
-    e.preventDefault();
+function showInfoButton(event){
+    event.preventDefault();
+    if(event.target.firstElementChild === null){
+        return '';
+    }else{
+      cardsButton = document.getElementById(event.target.firstElementChild.id);
+    }
+
     //create cardDesc(div) and add a class
     let cardDesc = document.createElement('div');
     cardDesc.classList.add('hello');
@@ -74,7 +79,7 @@ function showInfoButton(e){
         return listing =
         `<div class='extra-info' id='data-${listing.id}'>
         <img src='${listing.image}' id='card-image' style='width:150px; height:150px'>
-        <a href='#' class='close-button' id='close-button'><b>X</b></a>
+        <a href='javascript:;' class='close-button' id='close-button'>X</a>
             <table>
                 <thead>
                     <tr>
@@ -126,40 +131,15 @@ function buttonDeleter(){
 //deletes all classes named .hello
 function deleteCard(e){
     e.preventDefault;
-    e.target.parentElement.parentElement.remove();
-    //list = document.querySelectorAll('.hello');
-    let phone, phoneId;
-    //remove from the DOM
-    //console.log(e.target.parentElement.parentElement.parentElement)
-    //if (e.target.classList.contains('close-button')){
-
-      //phone = e.target.parentElement.parentElement;
-      //phoneId = phone.querySelector('a').getAttribute('data-id');
-    //}
-  //}
-
-
-    //for(let i = 0, len = list.length; i<len; i++) {
-      //  list[i].remove();
-        //}
+    let removeElement = e.target.parentElement.parentElement.parentElement;
+    //removeElement.firstElementChild.remove();
+    while(removeElement.firstElementChild) {
+     removeElement.removeChild(removeElement.firstElementChild);
     }
-
-/*
-let phonesLS = getPhonesFromStorage();
-
-//loop through the array and find the index to remove
-phonesLS.forEach(function(phoneLS, index){
-  if(phoneLS.id === id){
-    phonesLS.splice(index, 1);
   }
-});
-*/
-
 
 //listeners
 function loadEventListenersCart(){
-
-
   //add to shopping cart menu and localStorage
   //variables
   let phoneBtn = document.querySelectorAll('.add-to-cart'),
@@ -180,12 +160,10 @@ function loadEventListenersCart(){
   clearCartBtn.addEventListener('click', clearCart);
 
   //Document ready
-  //document.addEventListener('DOMContentLoaded', getFromLocalStorage);
   getFromLocalStorage();
 }
 
 //functions
-
 function buyPhone(e){
   e.preventDefault();
   //find phone that was added by using delegation
@@ -194,8 +172,8 @@ function buyPhone(e){
 
     //read the values
     getPhoneInfo(cellPhone);
+    }
   }
-}
 
 //reads html information of the selected phones
 function getPhoneInfo(cellPhone){
