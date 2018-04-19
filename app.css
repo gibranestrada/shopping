@@ -211,27 +211,27 @@ main {
 
 .info-card h4 {
     color: cornflowerblue;
-    font-size: 12px;
+    font-size: 20px;
     display: inline-block;
     height: 5px;
 }
 .price{
-  font-size: 12px;
+  font-size: 20px;
   display: inline-block;
 }
-@media screen and (min-width: 600px){
+.info-card p {
+  font-size: 16px;
+}
+@media screen and (min-width: 900px){
    .info-card h4 {
-    font-size: 22px;
+    font-size: 26px;
   }
   .price{
-    font-size: 22px;
+    font-size: 26px;
   }
   .info-card p {
-    font-size: 30px;
+    font-size: 20px;
   }
-}
-.info-card p {
-  font-size: 12px;
 }
 
 .info-card span{
@@ -272,7 +272,21 @@ main {
 .extra-info tr{
     text-align: left;
 }
-
+.descriptionCard{
+  color: black;
+}
+@media screen and (min-width: 800px){
+  .extra-info th{
+    font-size: 18px;
+  }
+  .extra-info span{
+    font-size: 20px;
+  }
+  .descriptionCard{
+    font-size: 18px;
+    color: black;
+  }
+}
 #close-button{
     float:right;
     padding: 8px 13px 8px 13px;

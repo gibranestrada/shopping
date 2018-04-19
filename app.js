@@ -96,7 +96,7 @@ function showInfoButton(event){
                 <tbody></tbody>
             </table>
             <span style='color: royalblue'>${listing.name} <span><b>$${listing.price}</b></span><br />
-            <span>${listing.description}</span>
+            <div class='descriptionCard'>${listing.description}</div>
         </div>
         `
     });
@@ -307,21 +307,18 @@ function getFromLocalStorage(){
       shoppingCartContent.appendChild(row);
   });
 }
-//Search for phones
+//filter phones by name
 function searchPhones(){
   let input, filterPhones, cellData, phoneNames, i, a;
   input = document.getElementById('search-phone');
   filterPhones = input.value.toUpperCase();
-  console.log('upper Case', filterPhones)
   cellData = document.getElementById('card');
-  console.log('id:card', cellData);
   phoneNames = cellData.querySelectorAll(".card");
-  console.log('grab all card class:', phoneNames)
   for(i=0; i<phoneNames.length; i++){
     a = phoneNames[i].getElementsByTagName("h4")[0];
-    console.log('h4 names:', a)
     if(a.innerHTML.toUpperCase().indexOf(filterPhones) > -1) {
       phoneNames[i].style.display = "";
+
     }else{
       phoneNames[i].style.display = "none";
     }
