@@ -101,19 +101,12 @@ function showInfoButton(event){
         `
     });
 
-    //Match event id with phoneArray id
-    if(event.target.id == 'data-1' &&  phoneArray[0].includes('data-1') == true){
-        phoneArray = phoneArray[0];
-    }else if (event.target.id == 'data-2' &&  phoneArray[1].includes('data-2') == true){
-        phoneArray = phoneArray[1]
-    }else if (event.target.id == 'data-3' &&  phoneArray[2].includes('data-3') == true){
-        phoneArray = phoneArray[2]
-    }else if (event.target.id == 'data-4' &&  phoneArray[3].includes('data-4') == true){
-        phoneArray = phoneArray[3]
-    }else if (event.target.id == 'data-5' &&  phoneArray[4].includes('data-5') == true){
-        phoneArray = phoneArray[4]
-    }else  if(event.target.id == 'data-6' &&  phoneArray[5].includes('data-6') == true){
-        phoneArray = phoneArray[5]
+    //loop through phoneArray to close the right card by matching even.target id with the arrays id
+    let i;
+    for(i = 0; i< phoneArray.length; i++){
+      if(event.target.id === phoneArray[i].slice(28,34)){
+        phoneArray = phoneArray[i];
+      }
     }
 
     //add phoneArray to cardDesc
