@@ -6,7 +6,7 @@ In this project I used a lot of javascript to:
 1. Map through the api data and display it on the DOM  as cards.
 2. Filter phones by phone name
 3. Added 'click to cart' button to add any phone selected to the shopping cart and
-    it adds it to the localStorage.
+    it adds it to the localStorage. Any phones in the shopping cart will be there after refreshing the website.
 4.  Added 'more info' button when clicked a hidden card shows up with more information on the selected item.
 5. Close button to close the current revealed hidden card.
 6. Added two buttons to the shopping cart to close a single selected item or to clear the whole shopping cart.
